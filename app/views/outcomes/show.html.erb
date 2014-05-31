@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Outcome name:</strong>
+  <%= @outcome.outcome_name %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @outcome.event_id %>
+</p>
+
+<p>
+  <strong>Odds:</strong>
+  <%= @outcome.odds %>
+</p>
+
+<p>
+  <strong>Number of bets:</strong>
+  <%= @outcome.number_of_bets %>
+</p>
+
+<p>
+  <strong>Odds display text:</strong>
+  <%= @outcome.odds_display_text %>
+</p>
+
+<%= link_to 'Edit', edit_outcome_path(@outcome) %> |
+<%= link_to 'Back', outcomes_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  outcome_name: MyString
+  event_id: MyString
+  odds: MyString
+  number_of_bets: 1
+  odds_display_text: MyString
+
+two:
+  outcome_name: MyString
+  event_id: MyString
+  odds: MyString
+  number_of_bets: 1
+  odds_display_text: MyString

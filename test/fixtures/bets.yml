@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: MyString
+  bet_amount: 1
+  event_id: MyString
+  outcome_id: MyString
+
+two:
+  user_id: MyString
+  bet_amount: 1
+  event_id: MyString
+  outcome_id: MyString
