@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   resources :users
 
-
   scope '/api', module: 'api' do
     post 'login' => 'users#login'
 

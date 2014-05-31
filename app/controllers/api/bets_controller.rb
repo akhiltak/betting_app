@@ -17,10 +17,10 @@ class BetsController < ApiController
         	bet = Bet.new
         	user = User.where(:device_id => params[:device_id]).first
         	bet.user_id=user.id
-        	bet.event_id=params[:event_id]
-        	bet.outcome_id=params[:outcome_id]
-        	bet.bet_amount=params[:credits]
-        	bet.total_bets_placed += 1	# update the total bet count for the event
+        	bet.event_id=params[:event_id].to_i
+        	bet.outcome_id=params[:outcome_id].to_i
+        	bet.bet_amount=params[:credits].to_i
+        	bet.total_bets_placed = 1	# update the total bet count for the event
         	bet.save
 
         	# update the bet count in the corresponding output

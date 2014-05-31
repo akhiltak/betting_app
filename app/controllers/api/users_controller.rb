@@ -10,10 +10,17 @@ class UsersController < ApiController
     else
       user = User.where(:device_id => params[:device_id]).first_or_create
       user.name = params[:name]
+      user.credits=100
       user.save
-      render :json => {
-        'status' => 'SUCCESS'
-      },
+      response = {}
+      response['status'] = "SUCCESS"
+      response['user'] = {
+        'id' => user.id,
+        'name' => user.email,
+        'credits' => user.credits,
+        'device_id' => user.device_id
+      }
+      render :json => response,
       :status => 200
     end
   end
@@ -39,6 +46,7 @@ class UsersController < ApiController
     def refresh
 
       #do book keeping operations here
+
 
     end
 end
