@@ -44,15 +44,16 @@ class EventsController < ApiController
 
     if action == "EVENT_COMPLETED"
       data = {
-        :name => user.name
-        :device_id => device_id
-        :event_name => Event.find(event_id).name
-        :user_status => user_status
+        :name => user.name,
+        :device_id => device_id.to_s,
+        :event_name => Event.find(event_id).name,
+        :user_status => user_status,
         :credits => Bet.find(bet_id).bet_amount
       }
       
     ParseModel.push_notification('event_result_received', "user_" + device_id.to_s, data)
   end
+end
 
 end
 end
