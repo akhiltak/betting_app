@@ -21,14 +21,10 @@
 </p>
 
 <p>
-  <strong>Results till:</strong>
-  <%= @event.results_till %>
-</p>
-
-<p>
   <strong>Total bets:</strong>
   <%= @event.total_bets %>
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Outcomes', event_outcomes_path(@event) %> |
 <%= link_to 'Back', events_path %>

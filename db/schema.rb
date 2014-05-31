@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140531100300) do
+ActiveRecord::Schema.define(version: 20140531123535) do
 
   create_table "bets", force: true do |t|
-    t.string   "user_id"
+    t.integer  "user_id",    limit: 255
     t.integer  "bet_amount"
-    t.string   "event_id"
-    t.string   "outcome_id"
+    t.integer  "event_id",   limit: 255
+    t.integer  "outcome_id", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,12 +30,13 @@ ActiveRecord::Schema.define(version: 20140531100300) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "open_till"
-    t.datetime "results_till"
+    t.string   "status"
+    t.integer  "final_outcome_id"
   end
 
   create_table "outcomes", force: true do |t|
     t.string   "outcome_name"
-    t.string   "event_id"
+    t.integer  "event_id",          limit: 255
     t.string   "odds"
     t.integer  "number_of_bets"
     t.string   "odds_display_text"

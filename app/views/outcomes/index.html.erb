@@ -1,6 +1,6 @@
 <h1>Listing outcomes</h1>
 
-<table>
+<table cellpadding="10px" cellspacing="0px" border="1px">
   <thead>
     <tr>
       <th>Outcome name</th>
@@ -30,4 +30,5 @@
 
 <br>
 
-<%= link_to 'New Outcome', new_outcome_path %>
+<%= link_to 'New Outcome', new_event_outcome_path(@event) %> |
+<%= link_to 'Back to Event', event_path(@event) %>

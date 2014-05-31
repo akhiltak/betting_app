@@ -4,7 +4,8 @@ class OutcomesController < ApplicationController
   # GET /outcomes
   # GET /outcomes.json
   def index
-    @outcomes = Outcome.all
+    @event = Event.find(params[:event_id])
+    @outcomes = Outcome.where(:event_id => params[:event_id])
   end
 
   # GET /outcomes/1
@@ -14,7 +15,8 @@ class OutcomesController < ApplicationController
 
   # GET /outcomes/new
   def new
-    @outcome = Outcome.new
+    @event = Event.find(params[:event_id])
+    @outcome = Outcome.new(:event_id => params[:event_id])
   end
 
   # GET /outcomes/1/edit
