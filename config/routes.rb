@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
     get 'update_credits' => 'users#update_credits'
 
+    get 'refresh' => 'users#refresh'
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

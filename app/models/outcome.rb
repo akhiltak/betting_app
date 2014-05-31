@@ -6,5 +6,6 @@ class Outcome < ActiveRecord::Base
 		current_odds = self.odds
 
 	end
+	
   belongs_to :event
 end

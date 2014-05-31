@@ -34,5 +34,11 @@ class UsersController < ApiController
       },
       :status => 200
     end
+
+    def refresh
+
+      #do book keeping operations here
+
+    end
 end
 end
