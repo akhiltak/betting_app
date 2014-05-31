@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :outcomes
+  
+  resources :events do
+    resources :outcomes, :only => ['index', 'new']
+  end
 
-  resources :events
+  resources :outcomes, :except => ['index', 'new']
 
   resources :bets
 
