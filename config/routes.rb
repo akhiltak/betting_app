@@ -12,6 +12,11 @@ Rails.application.routes.draw do
     post 'login' => 'users#login'
 
     get 'events' => 'events#index'
+
+    post 'place_bet' => 'bets#place_bet'
+
+    get 'update_credits' => 'users#update_credits'
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -5,6 +5,7 @@ class CreateBets < ActiveRecord::Migration
       t.integer :bet_amount
       t.string :event_id
       t.string :outcome_id
+      t.integer :total_bets_placed
 
       t.timestamps
     end

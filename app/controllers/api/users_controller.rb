@@ -18,5 +18,21 @@ class UsersController < ApiController
     end
   end
 
+  def update_credits
+    if params[:device_id].blank?
+            render :json => {
+        'error' => 'MISSING_PARAMS'
+      },
+      :status => 400
+    else
+      #check if last accessed time 
+      user = User.where(:device_id => params[:device_id]).first
+      user.credits += 50
+      user.save
+      render :json => {
+        'status' => 'SUCCESS'
+      },
+      :status => 200
+    end
 end
 end
