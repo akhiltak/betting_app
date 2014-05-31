@@ -2,7 +2,7 @@ module Api
 class BetsController < ApiController
 
 	def place_bet
-		if params[:device_id].blank? or params[:event_id.blank? or params[:outcome_id].blank? or params[:credits].blank? then
+	if params[:device_id].blank? or params[:event_id].blank? or params[:outcome_id].blank? or params[:credits].blank?
 			render :json => {
         'error' => 'MISSING_PARAMS'
       },
