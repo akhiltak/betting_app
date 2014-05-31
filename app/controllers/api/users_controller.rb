@@ -34,6 +34,7 @@ class UsersController < ApiController
       },
       :status => 200
     end
+  end
 
     def refresh
 
