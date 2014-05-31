@@ -23,4 +23,3 @@ class ParseModel
     push.save
   end
 end
-end

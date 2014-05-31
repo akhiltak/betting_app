@@ -3,6 +3,7 @@
 <table cellpadding="10px" cellspacing="0px" border="1px">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th>Desc</th>
       <th>Category</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
+        <td><%= event.id %></td>
         <td><%= event.name %></td>
         <td><%= event.desc %></td>
         <td><%= event.category %></td>

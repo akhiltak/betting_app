@@ -3,6 +3,7 @@
 <table cellpadding="10px" cellspacing="0px" border="1px">
   <thead>
     <tr>
+      <th>Outcome id</th>
       <th>Outcome name</th>
       <th>Event</th>
       <th>Odds</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @outcomes.each do |outcome| %>
       <tr>
+        <td><%= outcome.id %></td>
         <td><%= outcome.outcome_name %></td>
         <td><%= outcome.event_id %></td>
         <td><%= outcome.odds %></td>

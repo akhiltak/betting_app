@@ -20,7 +20,7 @@ class BetsController < ApiController
         	bet.event_id=params[:event_id].to_i
         	bet.outcome_id=params[:outcome_id].to_i
         	bet.bet_amount=params[:credits].to_i
-        	bet.total_bets_placed = 1	# update the total bet count for the event
+        	# bet.total_bets_placed = 1	# update the total bet count for the event
         	bet.save
 
         	# update the bet count in the corresponding output
@@ -29,13 +29,16 @@ class BetsController < ApiController
         	outcome.recalculate_and_update_odds #recalculate the odds here
         	outcome.save
 
+            event = Event.find(params[:event_id].to_i)
+            event.total_bets += 1
+            event.save
+
         	#decrease user credits
         	user.credits -= params[:credits].to_i
         	user.save
 
         	render :json => {
-        		'new_bet' => bet,
-        		'user' => user
+        		'status' => "SUCCESS"
         	},
         	:status => 200
 
