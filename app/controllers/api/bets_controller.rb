@@ -7,7 +7,7 @@ class BetsController < ApiController
                 'error' => 'MISSING_PARAMS'
             },
           :status => 400
-        elsif params[:credits] > User.where(:device_id => params[:device_id]).first.credits
+        elsif params[:credits].to_i > User.where(:device_id => params[:device_id]).first.credits.to_i
         	render :json => {
         		'error' => 'NOT ENOUGH CREDITS IN ACCOUNT FOR THIS BET'
         	},
@@ -24,13 +24,13 @@ class BetsController < ApiController
         	bet.save
 
         	# update the bet count in the corresponding output
-        	outcome = Outcome.find(:outcome_id)
+        	outcome = Outcome.find(params[:outcome_id])
         	outcome.number_of_bets += 1
         	outcome.recalculate_and_update_odds #recalculate the odds here
         	outcome.save
 
         	#decrease user credits
-        	user.credits -= params[:credits]
+        	user.credits -= params[:credits].to_i
         	user.save
 
         	render :json => {
