@@ -3,7 +3,7 @@ module HelperModel
   def self.get_response user
     response = {}
     slack_time = 5.minutes
-    response['all_events'] = Event.where("open_till > ?", Time.zone.now + slack_time).collect { |event|
+    response['all_events'] = Event.where("open_till > ?", Time.zone.now + slack_time).order('total_bets desc').collect { |event|
       {
         'id' => event.id,
         'name' => event.name,
