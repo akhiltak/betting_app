@@ -16,6 +16,7 @@ module HelperModel
           {
             'id' => outcome.id,
             'name' => outcome.outcome_name,
+            'returns' => find_returns(outcome.odds_display_text),
             'odds_display_text' => outcome.odds_display_text,
             'number_of_bets' => outcome.number_of_bets
           }
@@ -30,7 +31,7 @@ module HelperModel
         'bet_amount' => x.bet_amount,
         'outcome_name' => Outcome.find(x.outcome_id).outcome_name,
         'time_remaining' =>  calculate_remaining_time(x.event_id),
-        'current_odds' => Outcome.find(x.outcome_id).odds_display_text
+        'current_odds' => find_returns(Outcome.find(x.outcome_id).odds_display_text)
       }
     }
 
@@ -40,6 +41,14 @@ module HelperModel
 
     response['credits'] = user.credits
     return response
+  end
+
+  def self.find_returns odds_ratio
+    total_odds = 0
+    odds_ratio.split(":").each { |x| 
+      total_odds += x.to_i
+    }
+    return (1+(1.0)*odds_ratio.split(":").first.to_i/total_odds).round(2)
   end
 
   def self.calculate_remaining_time event_id
