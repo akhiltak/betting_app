@@ -40,6 +40,8 @@ class BetsController < ApiController
         	@user.credits -= params[:credits].to_i
         	@user.save
 
+            EventsController.event_completion("BET_PLACED",@user.device_id)
+
         	render :json => {
         		'status' => "SUCCESS"
         	},

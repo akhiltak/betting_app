@@ -5,7 +5,7 @@ require 'parse-ruby-client'
 #collapse_key
 class ParseModel
   #data parameter is a hash that can be sent along with notification
-  def self.push_notification(collapse_key, channels, data = nil, push_time = nil)
+  def self.push_notification(collapse_key, channels, data = nil)
     Parse.init(:application_id  => 'FWcmH50VWJ4m5E41q2JwmwK0bgriJOcCQ3ycVmCo', :api_key => 'WfXM042XoB9NHL61I3PIrOX421c9wM7fdUvKVybe')
     message = { 
       :action => "com.hackathon.bettinggame.PARSE_NOTIFICATION",

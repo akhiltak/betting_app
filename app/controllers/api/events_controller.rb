@@ -1,30 +1,36 @@
 module Api
-class EventsController < ApiController
+  class EventsController < ApiController
 
-  before_filter :authenticate_user
+    before_filter :authenticate_user
 
-  def index
-    render :json => HelperModel.get_response(@user), :status => 200
-  end
-#user_status will be "lost" or "win"
-  def self.event_completion(action, device_id, event_id = nil, bet_id=nil, user_status)
-    user = User.where(:device_id => device_id).first resue nil
-    if user.nil?
-      return
+    def index
+      render :json => HelperModel.get_response(@user), :status => 200
+    end
+    #user_status will be "lost" or "win"
+    def self.event_completion(action, device_id)
+      user = User.where(:device_id => device_id.to_i).first rescue nil
+      if user.nil?
+        return
+      end
+
+      if action == "EVENT_COMPLETED"
+        data = {
+          'title' => 'Betting App alert',
+          'alert' => 'Result of an event updated'
+        }
+
+        ParseModel.push_notification('event_result_received', "user_" + device_id.to_s, data)
+      end
+
+      if action == "BET_PLACED"
+        data = {
+          'title' => 'Betting App alert',
+          'alert' => 'Your bet has been placed'
+        }
+
+        ParseModel.push_notification('bet_placed', "user_" + device_id.to_s, data)
+      end
     end
 
-    if action == "EVENT_COMPLETED"
-      data = {
-        :name => user.name,
-        :device_id => device_id.to_s,
-        :event_name => Event.find(event_id.to_i).name,
-        :user_status => user_status,
-        :credits => Bet.find(bet_id.to_i).bet_amount
-      }
-      
-    ParseModel.push_notification('event_result_received', "user_" + device_id.to_s, data)
   end
-end
-
-end
 end

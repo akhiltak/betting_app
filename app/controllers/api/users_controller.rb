@@ -54,6 +54,10 @@ class UsersController < ApiController
       Event.where("open_till > ?",Time.zone.now).update_all(:status => 'OPEN')
 
       ##update odds
+
+
+      ##send notification of event result
+      
       
 
       render :json => HelperModel.get_response(@user) , :status => 200
