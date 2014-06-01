@@ -6,7 +6,9 @@
       <th>User</th>
       <th>Bet amount</th>
       <th>Event</th>
+      <th>Event Name</th>
       <th>Outcome</th>
+      <th>Outcome Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +19,9 @@
         <td><%= bet.user_id %></td>
         <td><%= bet.bet_amount %></td>
         <td><%= bet.event_id %></td>
+        <td><%= Event.find(bet.event_id).name %></td>
         <td><%= bet.outcome_id %></td>
+        <td><%= Outcome.find(bet.outcome_id).outcome_name %></td>
         <td><%= link_to 'Show', bet %></td>
         <td><%= link_to 'Edit', edit_bet_path(bet) %></td>
         <td><%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
