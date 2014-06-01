@@ -4,4 +4,4 @@
 Everybody loves betting. Now bet on real events matching your interests.
 Be it cricket or politics, If you have the guts you can win it. All you need is a smartphone.
 
-https://github.com/bbc4468/betting_app/edit/master/betting_bad.apk
+https://github.com/bbc4468/betting_app/releases/download/Version1.0/BettingBad.apk
