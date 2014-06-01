@@ -8,7 +8,7 @@ module Api
     end
     #user_status will be "lost" or "win"
     def self.event_completion(action, device_id)
-      user = User.where(:device_id => device_id.to_i).first rescue nil
+      user = User.where(:device_id => device_id).first rescue nil
       if user.nil?
         return
       end

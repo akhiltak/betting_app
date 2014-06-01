@@ -55,10 +55,7 @@ class UsersController < ApiController
 
       ##update odds
 
-
       ##send notification of event result
-      
-      
 
       render :json => HelperModel.get_response(@user) , :status => 200
 

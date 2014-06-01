@@ -14,9 +14,6 @@ class ParseModel
     unless data.nil?
       message = message.merge(data)
     end
-    unless push_time.nil?
-      message["push_time"] = push_time
-    end
     push = Parse::Push.new(message)
     push.channels = channels.split(',').map{|channel| channel}
     push.type = "android"

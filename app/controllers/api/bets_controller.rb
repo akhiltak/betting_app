@@ -39,8 +39,8 @@ class BetsController < ApiController
         	#decrease user credits
         	@user.credits -= params[:credits].to_i
         	@user.save
-
-            EventsController.event_completion("BET_PLACED",@user.device_id)
+            
+            Api::EventsController.event_completion("BET_PLACED",@user.device_id)
 
         	render :json => {
         		'status' => "SUCCESS"
