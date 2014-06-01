@@ -23,7 +23,7 @@ module HelperModel
       }
     }
 
-    response['my_bets'] = Bet.joins('INNER JOIN events ON events.id = bets.event_id').where("events.status = ? and bets.user_id = ?", 'OPEN', 1 ).collect { |x|
+    response['my_bets'] = Bet.joins('INNER JOIN events ON events.id = bets.event_id').where("events.status = ? and bets.user_id = ?", 'OPEN', user.id ).collect { |x|
       {
         'id' => x.id,
         'event_name' => Event.find(x.event_id).name,
