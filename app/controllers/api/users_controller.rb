@@ -12,7 +12,7 @@ class UsersController < ApiController
     else
       user = User.where(:device_id => params[:device_id]).first_or_create
       user.name = params[:name]
-      user.credits=100
+      user.credits=1000
       user.save
       response = {}
       response['status'] = "SUCCESS"
@@ -37,7 +37,7 @@ class UsersController < ApiController
       #check if last accessed time 
       # user = User.where(:device_id => params[:device_id]).first
 
-      @user.credits += 50
+      @user.credits += 100
       @user.save
       render :json => {
         'status' => 'SUCCESS'
@@ -56,7 +56,6 @@ class UsersController < ApiController
       ##update odds
 
       ##send notification of event result
-
       render :json => HelperModel.get_response(@user) , :status => 200
 
     end

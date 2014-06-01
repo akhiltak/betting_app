@@ -29,12 +29,35 @@ module HelperModel
         'event_name' => Event.find(x.event_id).name,
         'bet_amount' => x.bet_amount,
         'outcome_name' => Outcome.find(x.outcome_id).outcome_name,
-        'time_remaining' =>  ((Event.find(x.event_id).open_till - Time.zone.now)/1.days).to_i,
+        'time_remaining' =>  calculate_remaining_time(x.event_id),
         'current_odds' => Outcome.find(x.outcome_id).odds_display_text
       }
     }
+
+    if user.credits.to_i < 100
+      user.credits += 100
+    end
+
     response['credits'] = user.credits
     return response
+  end
+
+  def self.calculate_remaining_time event_id
+    days, time_remaining = (Event.find(event_id).open_till - Time.zone.now).divmod(1.day)
+    hours, time_remaining = time_remaining.divmod(1.hour)
+    minutes, seconds = time_remaining.divmod(1.minute)
+    seconds=seconds.to_i
+
+    if days.to_i != 0
+      time_remaining = "#{days} days, #{hours} hours"
+    elsif hours.to_i != 0
+      time_remaining = "#{hours} hours, #{minutes} minutes"
+    elsif minutes != 0
+      time_remaining = "#{minutes} minutes, #{seconds} seconds"
+    else
+      time_remaining = "#{seconds} seconds"
+    end
+    return time_remaining.to_s
   end
 
 end
