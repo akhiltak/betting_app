@@ -68,5 +68,4 @@ module HelperModel
     end
     return time_remaining.to_s
   end
-
 end

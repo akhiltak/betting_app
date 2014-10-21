@@ -1,5 +1,7 @@
 class Outcome < ActiveRecord::Base
-
+	
+  belongs_to :event
+  
 	def recalculate_and_update_odds(outcome_id=nil, event_id=nil)
 		# a new bet has been placed on this order
 
@@ -13,6 +15,5 @@ class Outcome < ActiveRecord::Base
 			x.save
 		end
 	end
-	
-  belongs_to :event
+
 end
