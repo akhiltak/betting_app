@@ -30,7 +30,7 @@ gem 'json'
 
 gem 'parse-ruby-client'
 
-gem 'debugger'
+#gem 'debugger'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
